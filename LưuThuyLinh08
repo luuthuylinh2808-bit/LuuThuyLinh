@@ -1,0 +1,100 @@
+<?php
+
+//TRẮC NGHIỆM
+$cau1 = "5";
+$cau2 = "D";
+$cau3 = "D";
+$cau4 = "A";
+$cau5 = "A";
+
+echo "Câu 1: " . $cau1 . "<br>";
+echo "Câu 2: " . $cau2 . "<br>";
+echo "Câu 3: " . $cau3 . "<br>";
+echo "Câu 4: " . $cau4;
+
+// BÀI 1: SỐ NGUYÊN TỐ
+// Hàm kiểm tra số nguyên tố
+function isPrime($n) {
+
+    // Số nhỏ hơn 2 không phải số nguyên tố
+    if ($n < 2) {
+        return false;
+    }
+    for ($i = 2; $i < $n; $i++) {
+        if ($n % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+echo "<h2>Số nguyên tố từ 1 đến 100</h2>";
+
+echo "Các số nguyên tố là: ";
+
+for ($i = 1; $i <= 100; $i++) {
+
+    if (isPrime($i)) {
+        echo $i . " ";
+    }
+}
+
+echo "<hr>";
+
+// Bài 2: Quản lý sản phẩm
+$products = [
+
+    [
+        "name" => "Laptop",
+        "price" => 15000000,
+        "quantity" => 2
+    ],
+
+    [
+        "name" => "Điện thoại",
+        "price" => 8000000,
+        "quantity" => 3
+    ],
+
+    [
+        "name" => "Tai nghe",
+        "price" => 500000,
+        "quantity" => 5
+    ]
+
+];
+
+function totalValue($products) {
+
+    $total = 0;
+
+    foreach ($products as $product) {
+
+        $total = $total + ($product["price"] * $product["quantity"]);
+    }
+
+    return $total;
+}
+
+
+echo "<h2>Bài 2: Quản lý sản phẩm</h2>";
+
+foreach ($products as $product) {
+
+    echo "Tên sản phẩm: " . $product["name"] . "<br>";
+    echo "Giá: " . $product["price"] . " VNĐ<br>";
+    echo "Số lượng: " . $product["quantity"] . "<br>";
+
+    $value = $product["price"] * $product["quantity"];
+
+    echo "Giá trị: " . $value . " VNĐ<br>";
+
+    echo "<hr>";
+}
+echo "<strong>Tổng giá trị tất cả sản phẩm: "
+    . totalValue($products)
+    . " VNĐ</strong>";
+
+?>
+
+
